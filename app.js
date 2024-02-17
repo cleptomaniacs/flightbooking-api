@@ -22,8 +22,8 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use("/api/booking", booking);
-app.use("/api/flight", flight);
+app.use("/api/bookings", booking);
+app.use("/api/flights", flight);
 
 const PORT = process.env.PORT || 8000;
 
