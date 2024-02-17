@@ -16,7 +16,7 @@ const Booking = new mongoose.Schema(
     },
   },
   {
-    collection: "flightbookings",
+    collection: "bookings",
   }
 );
 
