@@ -3,7 +3,7 @@ const flight = require("../schema/Flight");
 
 routes.route("/").post(async (req, res, next) => {
   await flight
-    .post(req.body)
+    .create(req.body)
     .then((result) => res.status(201).json(result))
     .catch((err) => next(err));
 });
