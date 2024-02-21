@@ -10,6 +10,14 @@ const Booking = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    amount: {
+      type: Number,
+      required: true,
+    },
+    bookingId: {
+      type: Number,
+      required: true,
+    },
     flightId: {
       type: String,
       required: true,
