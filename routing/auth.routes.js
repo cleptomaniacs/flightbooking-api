@@ -35,17 +35,15 @@ routes.route("/login").post(async (req, res, next) => {
     .then((u) => u)
     .catch((err) => next(err));
   if (!userDB) {
-    return res.status(401).json({ error: "Incorrect username or password" });
+    return res.status(400).json({ error: "Incorrect username or password" });
   }
   const compare = await bcrypt.compare(data.password, userDB.password);
   if (!compare) {
-    return res.status(401).json({ error: "Incorrect username or password" });
+    return res.status(400).json({ error: "Incorrect username or password" });
   }
-  const token = await jwt.sign(
-    { _id: userDB._id, username: userDB.username, role: userDB.role },
-    secretKey
-  );
-  const response = { token: token, user: userDB };
+  let userz = { _id: userDB._id, role: userDB.role };
+  const token = await jwt.sign(userz, secretKey);
+  const response = { token: token, user: userz };
   return res.json(response);
 });
 
